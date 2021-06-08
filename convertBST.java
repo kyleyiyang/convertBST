@@ -25,3 +25,25 @@ class Solution {
         return root;
     }
 }
+
+********************************
+
+class Solution {
+    public TreeNode convertBST(TreeNode root) {
+        Stack<TreeNode> stack=new Stack<>();
+        TreeNode node=root;
+        int sum=0;
+        while (!stack.isEmpty() || node!=null) {
+            while (node!=null) {
+                stack.push(node);
+                node=node.right;
+            }
+            node=stack.pop();
+            sum+=node.val;
+            node.val=sum;
+            
+            node=node.left;
+        }
+        return root;
+    }
+}
